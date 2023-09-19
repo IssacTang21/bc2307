@@ -7,7 +7,7 @@ public enum Code {
   OK(20000, "OK"),
   // 40000-49999
   NOTFOUND(40000, "Resource NOT FOUND"),
-  JPH_NOTFOUND(40001, "JsonPlaceHolder RestClientException"),
+  SYMBOL_NOTFOUND(40001, "Finnhub RestClientException"),
   // Server
   SERVER_TIMEOUT(50000, "Server Timeout"),
   ;

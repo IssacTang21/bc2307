@@ -6,6 +6,7 @@ import com.vtxlab.demo.demofinnhub.model.Stock;
 
 public class CompanyMapper {
   public static CompanyDTO map(CompanyProfile companyProfile, Stock stock) {
+
     return CompanyDTO.builder()
         .companyProfile(companyProfile)
         .currentPrice(Double.valueOf(stock.getC()))

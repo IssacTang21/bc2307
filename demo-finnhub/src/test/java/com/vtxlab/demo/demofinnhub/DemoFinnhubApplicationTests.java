@@ -10,6 +10,4 @@ class DemoFinnhubApplicationTests {
 	void contextLoads() {
 	}
 
-	@Test
-	void 
 }
