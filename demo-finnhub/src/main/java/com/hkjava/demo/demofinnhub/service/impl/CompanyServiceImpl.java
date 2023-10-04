@@ -19,8 +19,8 @@ import com.hkjava.demo.demofinnhub.exception.FinnhubException;
 import com.hkjava.demo.demofinnhub.infra.Code;
 import com.hkjava.demo.demofinnhub.infra.Protocol;
 import com.hkjava.demo.demofinnhub.infra.RedisHelper;
-import com.hkjava.demo.demofinnhub.model.CompanyProfile;
-import com.hkjava.demo.demofinnhub.model.Quote;
+import com.hkjava.demo.demofinnhub.model.dto.finnhub.resp.CompanyProfile2DTO;
+import com.hkjava.demo.demofinnhub.model.dto.finnhub.resp.QuoteDTO;
 import com.hkjava.demo.demofinnhub.model.mapper.FinnhubMapper;
 import com.hkjava.demo.demofinnhub.repository.StockPriceRepository;
 import com.hkjava.demo.demofinnhub.repository.StockRepository;
@@ -80,7 +80,7 @@ public class CompanyServiceImpl implements CompanyService {
         .forEach(symbol -> {
           try {
             // Get Compnay Profile 2 (New)
-            CompanyProfile newProfile =
+            CompanyProfile2DTO newProfile =
                 this.getCompanyProfile(symbol.getSymbol());
 
             // Old Stock
@@ -105,7 +105,7 @@ public class CompanyServiceImpl implements CompanyService {
               System.out.println("completed symbol=" + symbol.getSymbol());
 
               // Get Stock price and save a new record of price into DB
-              Quote quote = stockPriceService.getQuote(symbol.getSymbol());
+              QuoteDTO quote = stockPriceService.getQuote(symbol.getSymbol());
               StockPrice stockPrice = finnhubMapper.map(quote);
               stockPrice.setStock(stock);
               stockPriceRepository.save(stockPrice);
@@ -178,7 +178,7 @@ public class CompanyServiceImpl implements CompanyService {
   }
 
   @Override
-  public CompanyProfile getCompanyProfile(String symbol)
+  public CompanyProfile2DTO getCompanyProfile(String symbol)
       throws FinnhubException {
     String url = UriComponentsBuilder.newInstance() //
         .scheme(Protocol.HTTPS.name().toLowerCase()) //
@@ -193,18 +193,18 @@ public class CompanyServiceImpl implements CompanyService {
 
     // Invoke Company Profile 2 with Redis Handling
     try {
-      CompanyProfile profile =
-          restTemplate.getForObject(url, CompanyProfile.class); // mocked
+      CompanyProfile2DTO profile =
+          restTemplate.getForObject(url, CompanyProfile2DTO.class); // mocked
       if (Objects.nonNull(profile)) { // success
         redisHelper.set(key, profile, 600000000);
       } else { // fail, get from redis
-        profile = (CompanyProfile) redisHelper.get(key);
+        profile = (CompanyProfile2DTO) redisHelper.get(key);
         if (profile == null)
           throw new FinnhubException(Code.FINNHUB_PROFILE2_NOTFOUND);
       }
       return profile;
     } catch (RestClientException e) {
-      CompanyProfile profileFromRedis = (CompanyProfile) redisHelper.get(key);
+      CompanyProfile2DTO profileFromRedis = (CompanyProfile2DTO) redisHelper.get(key);
       if (profileFromRedis == null)
         throw new FinnhubException(Code.FINNHUB_PROFILE2_NOTFOUND);
       return profileFromRedis;

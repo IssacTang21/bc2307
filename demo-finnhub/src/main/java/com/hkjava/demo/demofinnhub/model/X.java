@@ -14,8 +14,5 @@ public class X {
   // 2023-09-28 13:00:00
   // 2023-09-28 13:30:00
 
-  // private List<Price> prices; // this list has data
-  
-  // public List<> movingAvg(enum: DAY, int 50) {
-    // list of price -> this.prices
+ 
 }

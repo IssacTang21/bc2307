@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.hkjava.demo.demofinnhub.model.CompanyProfile;
+import com.hkjava.demo.demofinnhub.model.dto.finnhub.resp.CompanyProfile2DTO;
 
 public class DeserializationForRestTemplateTest {
 
@@ -27,7 +27,7 @@ public class DeserializationForRestTemplateTest {
   @Test
   void testDeserializationForRestTemplate() throws JsonProcessingException {
     // JSON -> Object
-    CompanyProfile companyProfile = CompanyProfile.builder() //
+    CompanyProfile2DTO companyProfile = CompanyProfile2DTO.builder() //
         .companyName("APPL Company") //
         .country("US") //
         .currency("USD") //
@@ -57,8 +57,8 @@ public class DeserializationForRestTemplateTest {
     // assertThat(jsonNode.path("marketCapitalization").asDouble(), is(3000.12));
 
     // test Deserilaizationn (main code -> automation)
-    CompanyProfile afterCompanyProfile =
-        objectMapper.readValue(mockedResponseInJson, CompanyProfile.class);
+    CompanyProfile2DTO afterCompanyProfile =
+        objectMapper.readValue(mockedResponseInJson, CompanyProfile2DTO.class);
         
     assertEquals(true,
         afterCompanyProfile.getIpoDate().equals(companyProfile.getIpoDate()));
@@ -72,7 +72,7 @@ public class DeserializationForRestTemplateTest {
   void testSerializationForRestTemplate() throws JsonProcessingException {
     // readTree to prove the conversion is correct
     // JSON -> Object
-    CompanyProfile companyProfile = CompanyProfile.builder() //
+    CompanyProfile2DTO companyProfile = CompanyProfile2DTO.builder() //
         .companyName("APPL Company") //
         .country("US") //
         .currency("USD") //

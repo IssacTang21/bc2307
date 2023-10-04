@@ -1,4 +1,4 @@
-package com.hkjava.demo.demofinnhub.model.mapper;
+package com.hkjava.demo.demofinnhub.model.test2;
 
 import com.hkjava.demo.demofinnhub.model.test.QWE;
 

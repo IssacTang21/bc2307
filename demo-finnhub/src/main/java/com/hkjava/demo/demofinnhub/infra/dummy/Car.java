@@ -1,4 +1,4 @@
-package com.hkjava.demo.demofinnhub.infra;
+package com.hkjava.demo.demofinnhub.infra.dummy;
 
 import lombok.Getter;
 

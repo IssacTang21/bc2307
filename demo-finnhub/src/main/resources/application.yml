@@ -50,3 +50,23 @@ spring.sql.init:
   # schema-locations: classpath:ddl/DDL_DROPS.sql, classpath:ddl/DDL_TUSERS.sql, classpath:ddl/DDL_TPOSTS.sql
 
 spring.profiles.active: enableScheduling
+
+management:
+  endpoints:
+    shutdown:
+      enabled: true
+    web:
+      base-path: /data
+      exposure:
+        include: "*"
+    health:
+      group:
+        readiness:
+          show-details: always
+
+info.application:
+  name: HelloWorld
+  description: A Demo for Spring Boot hello World!
+  author:
+    name: Vincent Lau
+    bio: Testing Bio

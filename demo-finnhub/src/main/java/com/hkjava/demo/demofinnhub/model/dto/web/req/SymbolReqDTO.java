@@ -1,4 +1,4 @@
-package com.hkjava.demo.demofinnhub.model.dto;
+package com.hkjava.demo.demofinnhub.model.dto.web.req;
 
 import com.hkjava.demo.demofinnhub.annotation.SymbolCheck;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class SymbolDTO {
+public class SymbolReqDTO {
   
   @SymbolCheck
   String symbol;

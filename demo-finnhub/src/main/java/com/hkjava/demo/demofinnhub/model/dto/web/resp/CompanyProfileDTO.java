@@ -12,7 +12,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CompanyProfile2DTO {
+public class CompanyProfileDTO {
   
   private String country;
 

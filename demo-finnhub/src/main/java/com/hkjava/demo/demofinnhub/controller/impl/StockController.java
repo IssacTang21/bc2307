@@ -7,7 +7,7 @@ import com.hkjava.demo.demofinnhub.config.AppStartRunner;
 import com.hkjava.demo.demofinnhub.controller.StockOperation;
 import com.hkjava.demo.demofinnhub.exception.FinnhubException;
 import com.hkjava.demo.demofinnhub.infra.ApiResponse;
-import com.hkjava.demo.demofinnhub.model.dto.web.req.SymbolDTO;
+import com.hkjava.demo.demofinnhub.model.dto.web.req.SymbolReqDTO;
 import com.hkjava.demo.demofinnhub.model.dto.web.resp.StockDTO;
 import com.hkjava.demo.demofinnhub.service.WebStockService;
 
@@ -19,7 +19,7 @@ public class StockController implements StockOperation {
   private WebStockService webStockService;
 
   @Override
-  public ApiResponse<StockDTO> stockInfo(SymbolDTO symbol)
+  public ApiResponse<StockDTO> stockInfo(SymbolReqDTO symbol)
       throws FinnhubException {
     return ApiResponse.<StockDTO>builder() //
         .ok() //
