@@ -1,14 +1,25 @@
-package com.hkjava.demo.demofinnhub.model;
+package com.hkjava.demo.demofinnhub.model.graph;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class TranDayTime {
 
-  private LocalDate datetime;
+  private LocalDateTime datetime;
+
+  public TranDayTime(String dateInString) {
+    this.datetime = LocalDate.parse(dateInString).atStartOfDay();
+  }
 
   // Assume Friday is not holiday
   public boolean isWeeklyClose() {

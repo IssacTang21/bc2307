@@ -5,19 +5,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasProperty;
+
 import java.util.List;
+
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
-// import static org.mockito.ArgumentMatchers.isNotNull;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
+
 import com.hkjava.demo.demofinnhub.config.TestDatabaseConfig;
 import com.hkjava.demo.demofinnhub.entity.Stock;
 import com.hkjava.demo.demofinnhub.entity.StockSymbol;

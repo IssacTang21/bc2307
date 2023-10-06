@@ -11,21 +11,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @TestConfiguration
 public class TestDatabaseConfig {
 
-  // Configure H2 with the same properties as PostgreSQL
-  @Bean
-  @Primary
-  @ConfigurationProperties(prefix = "spring.datasource")
-  DataSource dataSource() {
-    
-    return DataSourceBuilder.create() //
-        .url("jdbc:h2:mem:testdb") //
-        .driverClassName("org.h2.Driver") //
-        .build();
-  }
+    // Configure H2 with the same properties as PostgreSQL
+    @Bean
+    @Primary
+    @ConfigurationProperties(prefix = "spring.datasource")
+    DataSource dataSource() {
+        return DataSourceBuilder.create() //
+                .url("jdbc:h2:mem:testdb") //
+                .driverClassName("org.h2.Driver") //
+                .build();
+    }
 
-  @Bean
-  ObjectMapper objectMapper() {
-    return new ObjectMapper();
-  }
-  
+    @Bean
+    ObjectMapper objectMapper() {
+        return new ObjectMapper();
+    }
+
 }

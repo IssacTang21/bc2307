@@ -1,16 +1,16 @@
-package com.hkjava.demo.demofinnhub.model.dto.web.req;
+package com.hkjava.demo.demofinnhub.model.graph;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.ToString;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @EqualsAndHashCode
-public class SymbolReqDTO {
+@ToString
+public class Price {
   
-  String symbol;
+  private double price;
 
 }

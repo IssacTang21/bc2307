@@ -1,9 +1,16 @@
 package com.hkjava.demo.demofinnhub.infra;
 
-public class ApiResponse<T> {
+import io.swagger.v3.oas.annotations.media.Schema;
+
+public class ApiResp<T> {
   // attribute name by default same as JSON field name after serialziation
+  @Schema(description = "Code For System Response Cat")
   private int code;
+
+  @Schema(description = "Message to indicate error")
   private String message;
+
+  @Schema(description = "Response Data Body")
   private T data;
 
   public int getCode() {
@@ -22,7 +29,7 @@ public class ApiResponse<T> {
     return new ApiResponseBuilder<>();
   }
 
-  private ApiResponse(ApiResponseBuilder<T> builder) {
+  private ApiResp(ApiResponseBuilder<T> builder) {
     this.code = builder.code;
     this.message = builder.message;
     this.data = builder.data;
@@ -56,10 +63,10 @@ public class ApiResponse<T> {
       return this;
     }
 
-    public ApiResponse<T> build() {
+    public ApiResp<T> build() {
       if (this.code == 0 || this.message == null)
         throw new RuntimeException();
-      return new ApiResponse<>(this);
+      return new ApiResp<>(this);
     }
 
   }

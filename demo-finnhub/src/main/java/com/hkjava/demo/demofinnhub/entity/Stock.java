@@ -45,7 +45,6 @@ public class Stock implements Serializable {
   @Column(name = "market_cap", columnDefinition = "NUMERIC(15,2)")
   private double marketCap;
 
-  @Column(name = "currency")
   private String currency;
 
   @Column(name = "status" , columnDefinition = "VARCHAR(1)") // 'A', 'I'
